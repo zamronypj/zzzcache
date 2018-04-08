@@ -6,16 +6,16 @@ a PHP simple cache implemention.
 
 Run through composer
 
-    $ composer require juhara/slimcache
+    $ composer require juhara/tinycache
 
 # How to use
 
     <?php
 
-    use Juhara\SlimCache\Cache;
-    use Juhara\SlimCache\Storages\File;
-    use Juhara\SlimCache\Helpers\TimeUtility;
-    use Juhara\SlimCache\Helpers\Md5Hash;
+    use Juhara\TinyCache\Cache;
+    use Juhara\TinyCache\Storages\File;
+    use Juhara\TinyCache\Helpers\TimeUtility;
+    use Juhara\TinyCache\Helpers\Md5Hash;
 
     $cache = new Cache(
         new File(
