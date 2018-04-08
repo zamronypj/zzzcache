@@ -9,7 +9,7 @@ use Juhara\ZzzCache\Contracts\HashInterface;
 * cache implementation using File as storage
 * @author Zamrony P. Juhara <zamronypj@yahoo.com>
 */
-class File implements CacheStorageInterface
+final class File implements CacheStorageInterface
 {
     /**
      * cache directory
@@ -24,7 +24,7 @@ class File implements CacheStorageInterface
     private $filenamePrefix;
 
     /**
-     * Hash tlitiy class
+     * Hash utility class
      * @var HashInterface
      */
     private $hashService;
@@ -70,7 +70,6 @@ class File implements CacheStorageInterface
     {
         return file_get_contents($this->path($cacheId));
     }
-
 
     /**
      * write data to storage by cache name

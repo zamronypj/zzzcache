@@ -6,7 +6,7 @@ namespace Juhara\ZzzCache\Helpers;
  * helper class for timestamp calculation
  * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
-class TimeUtility
+final class TimeUtility
 {
     public function currentTimestamp()
     {

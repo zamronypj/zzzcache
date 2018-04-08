@@ -10,7 +10,7 @@ use Juhara\ZzzCache\Exceptions\CacheNameNotFound;
 /**
  * [SimpleCache description]
  */
-class Cache implements CacheInterface
+final class Cache implements CacheInterface
 {
     /**
      * time utility class
