@@ -1,4 +1,4 @@
-# About SlimCache
+# About TinyCache
 
 a PHP simple cache implemention.
 
