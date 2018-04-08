@@ -49,4 +49,6 @@ When reading data from cache, cache manager return string as it is. It is up to 
 
 ## Issue and Improvement contribution
 
-Just create PR if you want to improve it. Thank you.
+Just create PR if you want to improve it.
+
+Thank you.
