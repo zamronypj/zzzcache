@@ -4,7 +4,8 @@ a PHP simple cache implemention.
 
 # Requirement
 
-    - PHP >= 5.4
+    - [PHP >= 5.4](https://php.net)
+    - [Composer](https://getcomposer.org)
 
 # Installation
 
