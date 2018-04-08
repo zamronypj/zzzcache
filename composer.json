@@ -1,5 +1,5 @@
 {
-  "name": "juhara/slimcache",
+  "name": "juhara/tinycache",
   "description": "A minimalist cache system",
   "license": "apache 2.0",
   "authors": [
