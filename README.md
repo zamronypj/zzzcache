@@ -7,6 +7,7 @@ A PHP minimalist and simple cache implemention.
 
 # Installation
 Run through composer
+
     $ composer require juhara/zzzcache
 
 # How to use
