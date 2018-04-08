@@ -1,6 +1,6 @@
 <?php
 
-namespace Juhara\TinyCache\Exceptions;
+namespace Juhara\ZzzCache\Exceptions;
 
 use Exception;
 

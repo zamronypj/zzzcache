@@ -1,6 +1,6 @@
 <?php
 
-namespace Juhara\TinyCache\Contracts;
+namespace Juhara\ZzzCache\Contracts;
 
 /**
  * interface for any class capable of hashing string

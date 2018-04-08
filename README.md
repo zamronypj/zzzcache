@@ -1,4 +1,4 @@
-# About TinyCache
+# About ZzzCache
 
 a PHP simple cache implemention.
 
@@ -10,16 +10,16 @@ a PHP simple cache implemention.
 
 Run through composer
 
-    $ composer require juhara/tinycache
+    $ composer require juhara/zzzcache
 
 # How to use
 
     <?php
 
-    use Juhara\TinyCache\Cache;
-    use Juhara\TinyCache\Storages\File;
-    use Juhara\TinyCache\Helpers\TimeUtility;
-    use Juhara\TinyCache\Helpers\Md5Hash;
+    use Juhara\ZzzCache\Cache;
+    use Juhara\ZzzCache\Storages\File;
+    use Juhara\ZzzCache\Helpers\TimeUtility;
+    use Juhara\ZzzCache\Helpers\Md5Hash;
 
     $cache = new Cache(
         new File(

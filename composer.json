@@ -1,5 +1,5 @@
 {
-  "name": "juhara/tinycache",
+  "name": "juhara/zzzcache",
   "description": "A minimalist cache system",
   "license": "apache 2.0",
   "authors": [
@@ -10,7 +10,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Juhara\\TinyCache\\" : "src/"
+      "Juhara\\ZzzCache\\" : "src/"
     }
   },
   "require" : {

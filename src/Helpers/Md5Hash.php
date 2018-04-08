@@ -1,8 +1,8 @@
 <?php
 
-namespace Juhara\TinyCache\Helpers;
+namespace Juhara\ZzzCache\Helpers;
 
-use Juhara\TinyCache\Contracts\HashInterface;
+use Juhara\ZzzCache\Contracts\HashInterface;
 
 /**
  * basic MD5 hash implementation

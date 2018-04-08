@@ -1,9 +1,9 @@
 <?php
 
-namespace Juhara\TinyCache\Storages;
+namespace Juhara\ZzzCache\Storages;
 
-use Juhara\TinyCache\Contracts\CacheStorageInterface;
-use Juhara\TinyCache\Contracts\HashInterface;
+use Juhara\ZzzCache\Contracts\CacheStorageInterface;
+use Juhara\ZzzCache\Contracts\HashInterface;
 
 /**
 * cache implementation using File as storage

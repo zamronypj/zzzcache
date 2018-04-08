@@ -1,11 +1,11 @@
 <?php
 
-namespace Juhara\TinyCache;
+namespace Juhara\ZzzCache;
 
-use Juhara\TinyCache\Contracts\CacheInterface;
-use Juhara\TinyCache\Contracts\Cacheable;
-use Juhara\TinyCache\Contracts\CacheStorageInterface;
-use Juhara\TinyCache\Exceptions\CacheNameNotFound;
+use Juhara\ZzzCache\Contracts\CacheInterface;
+use Juhara\ZzzCache\Contracts\Cacheable;
+use Juhara\ZzzCache\Contracts\CacheStorageInterface;
+use Juhara\ZzzCache\Exceptions\CacheNameNotFound;
 
 /**
  * [SimpleCache description]

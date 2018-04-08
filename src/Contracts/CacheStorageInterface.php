@@ -1,6 +1,6 @@
 <?php
 
-namespace Juhara\TinyCache\Contracts;
+namespace Juhara\ZzzCache\Contracts;
 
 /**
  * interface for storage capable of storing cached data

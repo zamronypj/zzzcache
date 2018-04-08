@@ -1,6 +1,6 @@
 <?php
 
-namespace Juhara\TinyCache\Helpers;
+namespace Juhara\ZzzCache\Helpers;
 
 /**
  * helper class for timestamp calculation
