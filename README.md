@@ -2,6 +2,10 @@
 
 a PHP simple cache implemention.
 
+# Requirement
+
+    - PHP >= 5.4
+
 # Installation
 
 Run through composer

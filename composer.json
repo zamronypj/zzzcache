@@ -13,6 +13,9 @@
       "Juhara\\TinyCache\\" : "src/"
     }
   },
+  "require" : {
+      "php" : ">=5.4"
+  }
   "require-dev": {
     "phpunit/phpunit": "4.8.*"
   }
