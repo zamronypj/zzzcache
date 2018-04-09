@@ -47,7 +47,7 @@ When reading data from cache, cache manager return string as it is. It is up to 
 
     $cachedData = $cache->get('itemNeedToBeCache');
 
-## Issue and Improvement contribution
+# Contributing
 
 Just create PR if you want to improve it.
 
