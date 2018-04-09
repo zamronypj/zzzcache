@@ -1,5 +1,5 @@
 # About ZzzCache
-A PHP minimalist and simple cache implemention.
+A PHP minimalist and simple cache implementation.
 
 # Requirement
 - [PHP >= 5.4](https://php.net)
