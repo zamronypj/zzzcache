@@ -101,7 +101,7 @@ final class Cache implements CacheInterface
     {
         $this->cachedItems[$cacheName] = (object) [
             'cacheable' => $cacheable,
-            'expiry' => $this->timeUtil->expiry($cacheable->ttl());
+            'expiry' => $this->timeUtil->expiry($cacheable->ttl())
         ];
         return $this;
     }
