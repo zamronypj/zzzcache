@@ -67,7 +67,7 @@ To install, run composer
 
     $ composer require juhara/zzzredis
 
-See [zzzfile](https://github.com/zamronypj/zzzfile).
+See [zzzredis](https://github.com/zamronypj/zzzredis).
 
 # Contributing
 
