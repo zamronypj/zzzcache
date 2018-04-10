@@ -85,7 +85,7 @@ final class Cache implements CacheInterface
     {
         $this->throwExceptionIfNotExists($cacheName);
 
-        if (! $this->expired($acacheName)) {
+        if (! $this->expired($cacheName)) {
             return $this->getCachedItem($cacheName);
         }
 
