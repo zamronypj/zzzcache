@@ -6,9 +6,12 @@ use Juhara\ZzzCache\Contracts\CacheInterface;
 use Juhara\ZzzCache\Contracts\Cacheable;
 use Juhara\ZzzCache\Contracts\CacheStorageInterface;
 use Juhara\ZzzCache\Exceptions\CacheNameNotFound;
+use Juhara\ZzzCache\Helpers\TimeUtility;
 
 /**
- * [SimpleCache description]
+ * Cache implementation
+ *
+ * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
 final class Cache implements CacheInterface
 {
