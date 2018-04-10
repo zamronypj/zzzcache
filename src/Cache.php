@@ -46,7 +46,7 @@ final class Cache implements CacheInterface
     protected function expired($cacheName)
     {
         $item = $this->cachedItems[$cacheName];
-        return $this->storage->exists($cacheName) ||
+        return (! $this->storage->exists($cacheName)) ||
                $this->timeUtil->expired($item->expiry);
     }
 
