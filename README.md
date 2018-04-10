@@ -47,6 +47,28 @@ When reading data from cache, cache manager return string as it is. It is up to 
 
     $cachedData = $cache->get('itemNeedToBeCache');
 
+# Storage Implementation
+Caches need to be stored somewhere. ZzzCache does not implement storage interface.
+It delegates this to separate library to provide storage implementation,
+so developer can use storage implementation that suits their needs only.
+Currently supported implementation is file-based and Redis-based storage.
+
+### File-based Storage
+
+To install, run composer
+
+    $ composer require juhara/zzzfile
+
+See [zzzfile](https://github.com/zamronypj/zzzfile).
+
+### Redis-based Storage
+
+To install, run composer
+
+    $ composer require juhara/zzzredis
+
+See [zzzfile](https://github.com/zamronypj/zzzfile).
+
 # Contributing
 
 Just create PR if you want to improve it.
