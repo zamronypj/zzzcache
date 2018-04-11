@@ -148,6 +148,7 @@ final class Cache implements CacheInterface
     {
         $this->throwExceptionIfNotExists($cacheId);
         unset($this->cachedItems[$cacheId]);
+        $this->storage->remove($cacheId);
         return $this;
     }
 
@@ -158,6 +159,7 @@ final class Cache implements CacheInterface
     public function clear()
     {
         $this->cachedItems = [];
+        $this->storage->clear();
     }
 
 }

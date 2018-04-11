@@ -36,4 +36,9 @@ interface CacheStorageInterface
      * @return boolean true if cache is successfully removed
      */
     public function remove($cacheId);
+
+    /**
+     * remove all data from storage
+     */
+    public function clear();
 }
