@@ -1,14 +1,15 @@
 <?php
-
 namespace Juhara\ZzzCache\Helpers;
+
+use Juhara\ZzzCache\Contracts\ExpiryCalculatorInterface;
 
 /**
  * helper class for timestamp calculation
  * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
-final class TimeUtility
+final class TimeUtility implements ExpiryCalculatorInterface
 {
-    public function currentTimestamp()
+    private function currentTimestamp()
     {
         return round(microtime(true) * 1000);
     }

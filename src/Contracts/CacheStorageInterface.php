@@ -16,17 +16,24 @@ interface CacheStorageInterface
     public function exists($cacheId);
 
     /**
-     * read data from storage by cache name
+     * read data from storage by cache id
      * @param  string $cacheId cache identifier
      * @return string data from storage in serialized format
      */
     public function read($cacheId);
 
     /**
-     * write data to storage by cache name
+     * write data to storage by cache id
      * @param  string $cacheId cache identifier
      * @param  string $data item to cache in serialized format
      * @return int number of bytes written
      */
     public function write($cacheId, $data);
+
+    /**
+     * remove data from storage by cache id
+     * @param  string $cacheId cache identifier
+     * @return boolean true if cache is successfully removed
+     */
+    public function remove($cacheId);
 }

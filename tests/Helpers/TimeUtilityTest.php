@@ -10,14 +10,6 @@ use PHPUnit\Framework\TestCase;
  */
 final class TimeUtilityTest extends TestCase
 {
-    public function testCurrentTimeStampIsCorrect()
-    {
-        $timeUtil = new TimeUtility();
-        $currentTimestamp = round(microtime(true) * 1000);
-        $timeStamp = $timeUtil->currentTimestamp();
-        $this->assertEquals($timeStamp, $currentTimestamp);
-    }
-
     public function testExpiryIsCorrect()
     {
         $ttl = 20000;
