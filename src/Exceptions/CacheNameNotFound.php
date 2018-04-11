@@ -9,6 +9,6 @@ use Exception;
  *
  * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
-final class CacheNameNotFound extends Exception;
+final class CacheNameNotFound extends Exception
 {
 }
