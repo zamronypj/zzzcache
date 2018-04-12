@@ -28,7 +28,7 @@ interface CacheStorageInterface
      * @param  string $data item to cache in serialized format
      * @return int number of bytes written
      */
-    public function write($cacheId, $data);
+    public function write($cacheId, $data, $ttl);
 
     /**
      * remove data from storage by cache id

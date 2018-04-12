@@ -78,8 +78,10 @@ final class Cache implements CacheInterface
      */
     private function getFromCacheable($cacheId)
     {
-        $data = $this->cachedItems[$cacheId]->cacheable->data();
-        $this->storage->write($cacheId, $data);
+        $cacheable = $this->cachedItems[$cacheId]->cacheable;
+        $data = $cacheable->data();
+        $ttl = $cacheable->ttl();
+        $this->storage->write($cacheId, $data, $ttl);
         return $data;
     }
 
