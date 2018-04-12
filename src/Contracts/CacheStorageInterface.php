@@ -26,6 +26,7 @@ interface CacheStorageInterface
      * write data to storage by cache id
      * @param  string $cacheId cache identifier
      * @param  string $data item to cache in serialized format
+     * @param  int $ttl time to live
      * @return int number of bytes written
      */
     public function write($cacheId, $data, $ttl);
