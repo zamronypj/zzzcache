@@ -16,10 +16,23 @@ Run through composer
 
 Any class that can be stored in cache manager needs to implements `Cacheable` interface, which is `data()` and `ttl()` method.
 
-- `data()` method should return class data as serialized string.
+- `data()` method should return class data.
 - `ttl()` should return integer value of time to live in millisecond. This value determine how long data will be kept in cache until considered expired.
 
-When reading data from cache, cache manager return string as it is. It is up to caller to handle how to serialize it back into original class.
+When reading data from cache, cache manager relies on cache storage interface implementation to provide proper serialization/unserialization when read owr write data.
+
+There is one `Cacheable` implementation provided, `ClosureCacheable` class, which implements data as closure.
+
+    $ttl = 60*60*1; //cache item for 1 hour
+    $cacheableItem = new ClosureCacheable(function () {
+        return [
+            'dummyData' => 'dummy data'
+        ];
+    }, $ttl);
+
+When `$cacheableItem->data()` is called, it call closure function pass in constructor and return data that defiend in closure.
+
+Of course, you are free to implement your own.
 
 ### Initialize Cache instance
 
