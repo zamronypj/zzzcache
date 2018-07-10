@@ -30,7 +30,7 @@ There is one `Cacheable` implementation provided, `ClosureCacheable` class, whic
         ];
     }, $ttl);
 
-When `$cacheableItem->data()` is called, it call closure function pass in constructor and return data that defiend in closure.
+When `$cacheableItem->data()` is called, it callss closure function pass in constructor and return data that defined in closure.
 
 Of course, you are free to implement your own.
 
