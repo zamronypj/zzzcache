@@ -19,7 +19,7 @@ Any class that can be stored in cache manager needs to implements `Cacheable` in
 - `data()` method should return class data.
 - `ttl()` should return integer value of time to live in millisecond. This value determine how long data will be kept in cache until considered expired.
 
-When reading data from cache, cache manager relies on cache storage interface implementation to provide proper serialization/unserialization when read owr write data.
+When reading data from cache, cache manager relies on cache storage interface implementation to provide proper serialization/unserialization when read or write data.
 
 There is one `Cacheable` implementation provided, `ClosureCacheable` class, which implements data as closure.
 
