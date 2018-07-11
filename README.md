@@ -120,7 +120,7 @@ Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzred
             },
             60 * 60 * 1 //cache item for 1 hour
         );
-        $cachedData = $cache->add('itemNeedToBeCache', $cacheAbleItem)
+        $cachedData = $cache->add('itemNeedToBeCache', $acacheableItem)
                             ->get('itemNeedToBeCache');
     }
 
