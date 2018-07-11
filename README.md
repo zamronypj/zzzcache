@@ -107,7 +107,7 @@ Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzred
 
     ...
     try {
-        //try get data from cache
+        //try to get data from cache if available
         $cachedData = $cache->get('itemNeedToBeCache');        
     } catch (\Juhara\ZzzCache\Exceptions\CacheNameNotFound $e) {
         $acacheableItem = new \Juhara\ZzzCache\Helpers\ClosureCacheable(
