@@ -120,6 +120,7 @@ final class Cache implements CacheInterface
      *
      * @param string    $cacheId  cached item identifier
      * @param Cacheable $cacheable item to cached
+     * @return CacheInterface current instance
      */
     public function add($cacheId, Cacheable $cacheable)
     {
@@ -143,7 +144,7 @@ final class Cache implements CacheInterface
     /**
      * remove cached item by id
      * @param  string $cacheId cached item identifier
-     * @return void
+     * @return CacheInterface current instance
      * @throws CacheNameNotFound
      */
     public function remove($cacheId)
@@ -156,12 +157,13 @@ final class Cache implements CacheInterface
 
     /**
      * clear all cached items
-     * @return void
+     * @return CacheInterface current instance
      */
     public function clear()
     {
         $this->cachedItems = [];
         $this->storage->clear();
+        return $this;
     }
 
 }

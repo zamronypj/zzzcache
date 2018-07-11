@@ -20,6 +20,7 @@ interface CacheInterface
      * add cacheable item and associate it with cacheName
      * @param string    $cacheId  cached item identifier
      * @param Cacheable $cacheable item to cached
+     * @return CacheInterface current instance
      */
     public function add($cacheId, Cacheable $cacheable);
 
@@ -33,13 +34,14 @@ interface CacheInterface
     /**
      * remove cached item by name
      * @param  string $cacheId cached item identifier
-     * @return void
+     * @return CacheInterface current instance
+     * @throws CacheNameNotFound
      */
     public function remove($cacheId);
 
     /**
      * clear all cached items
-     * @return void
+     * @return CacheInterface current instance
      */
     public function clear();
 }
