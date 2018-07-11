@@ -1,5 +1,6 @@
 # About ZzzCache
-A PHP minimalist and simple cache implementation.
+A minimalist and simple PHP cache library implementation. Visit
+[Documentation](https://v3.juhara.com/zzzcache.html) for more information.
 
 # Requirement
 - [PHP >= 5.4](https://php.net)
@@ -14,14 +15,14 @@ Run through composer
 
 ### Implement Cacheable interface
 
-Any class that can be stored in cache manager needs to implements `Cacheable` interface, which is `data()` and `ttl()` method.
+Any class that can be stored in cache manager needs to implements `Juhara\ZzzCache\Contracts\Cacheable` interface, which is `data()` and `ttl()` method.
 
 - `data()` method should return class data.
 - `ttl()` should return integer value of time to live in millisecond. This value determine how long data will be kept in cache until considered expired.
 
 When reading data from cache, cache manager relies on cache storage interface implementation to provide proper serialization/unserialization when read or write data.
 
-There is one `Cacheable` implementation provided, `ClosureCacheable` class, which implements data as closure.
+There is one `Juhara\ZzzCache\Contracts\Cacheable` implementation provided, `ClosureCacheable` class, which implements data as closure.
 
     $ttl = 60 * 60 * 1; //cache item for 1 hour
     $cacheableItem = new Juhara\ZzzCache\Helpers\ClosureCacheable(function () {
