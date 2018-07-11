@@ -44,7 +44,7 @@ To use it, you need to provide `Juhara\ZzzCache\Contracts\CacheStorageInterface`
 
 See [Storage Implementation](#storage-implementation) for available `CacheStorageInterface` implementation.
 
-There is `Juhara\ZzzCache\Helpers\TimeUtility` class which is default `ExpiryCalculatorInterface` implementation for this library.
+There is `Juhara\ZzzCache\Helpers\TimeUtility` class which is default `ExpiryCalculatorInterface` implementation for this library. See [Example](#example)
 
     <?php
 
@@ -65,10 +65,6 @@ There is `Juhara\ZzzCache\Helpers\TimeUtility` class which is default `ExpiryCal
         ),
         new TimeUtility()
     );
-    $acacheableItem = new ClassThatImplementCacheable();
-    $cache->add('itemNeedToBeCache', $cacheAbleItem);
-
-    $cachedData = $cache->get('itemNeedToBeCache');
 
 # Storage Implementation
 Caches need to be stored somewhere. ZzzCache does not implement storage interface.
@@ -94,6 +90,28 @@ See [zzzredis](https://github.com/zamronypj/zzzredis).
 
 # Example
 
+Using file as cache storage with [zzzfile](https://github.com/zamronypj/zzzfile).
+
+    <?php
+
+    use Juhara\ZzzCache\Cache;
+    use Juhara\ZzzCache\Storages\File;
+    use Juhara\ZzzCache\Helpers\TimeUtility;
+    use Juhara\ZzzCache\Helpers\Md5Hash;
+
+    // create a file-based cache where all cache
+    // files is stored in directory name
+    // app/storages/cache with
+    // filename prefixed with string 'cache'
+    $cache = new Cache(
+        new File(
+            new Md5Hash(),
+            'app/storages/cache/',
+            'cache'
+        ),
+        new TimeUtility()
+    );
+
 Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzredis).
 
     <?php
@@ -108,7 +126,12 @@ Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzred
         new TimeUtility()
     );
 
+To get data from cache if available or from slower storage.
+
+    <?php
+
     ...
+
     try {
         //try to get data from cache if available
         $cachedData = $cache->get('itemNeedToBeCache');        
