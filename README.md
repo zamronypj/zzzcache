@@ -23,18 +23,28 @@ When reading data from cache, cache manager relies on cache storage interface im
 
 There is one `Cacheable` implementation provided, `ClosureCacheable` class, which implements data as closure.
 
-    $ttl = 60*60*1; //cache item for 1 hour
-    $cacheableItem = new ClosureCacheable(function () {
+    $ttl = 60 * 60 * 1; //cache item for 1 hour
+    $cacheableItem = new Juhara\ZzzCache\Helpers\ClosureCacheable(function () {
         return [
             'dummyData' => 'dummy data'
         ];
     }, $ttl);
 
-When `$cacheableItem->data()` is called, it callss closure function pass in constructor and return data that defined in closure.
+When `$cacheableItem->data()` is called, it calls closure function pass in constructor and return data that defined in closure.
 
 Of course, you are free to implement your own.
 
 ### Initialize Cache instance
+
+`Juhara\ZzzCache\Cache` class is default `Juhara\ZzzCache\Contracts\CacheInterface`
+implementation provided with this library.
+
+To use it, you need to provide `Juhara\ZzzCache\Contracts\CacheStorageInterface`
+ and `Juhara\ZzzCache\Contracts\ExpiryCalculatorInterface` implementation.
+
+See [Storage Implementation](#storage-implementation) for available `CacheStorageInterface` implementation.
+
+There is `Juhara\ZzzCache\Helpers\TimeUtility` class which is default `ExpiryCalculatorInterface` implementation for this library.
 
     <?php
 
@@ -81,6 +91,36 @@ To install, run composer
     $ composer require juhara/zzzredis
 
 See [zzzredis](https://github.com/zamronypj/zzzredis).
+
+# Example
+
+Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzredis).
+
+    <?php
+
+    use Juhara\ZzzCache\Cache;
+    use Juhara\ZzzCache\Storages\Redis;
+    use Juhara\ZzzCache\Helpers\TimeUtility;
+
+    // create a redis-based cache
+    $cache = new Cache(new Redis(new \Predis\Client()), new TimeUtility());
+
+    ...
+    try {
+        //try get data from cache
+        $cachedData = $cache->get('itemNeedToBeCache');        
+    } catch (\Juhara\ZzzCache\Exceptions\CacheNameNotFound $e) {
+        $acacheableItem = new \Juhara\ZzzCache\Helpers\ClosureCacheable(
+            function () {
+                //get data from slower storage
+                return ['dummyData'=>'dummyData'];
+            },
+            60 * 60 * 1 //cache item for 1 hour
+        );
+        $cachedData = $cache->add('itemNeedToBeCache', $cacheAbleItem)
+                            ->get('itemNeedToBeCache');
+    }
+
 
 # Contributing
 
