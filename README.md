@@ -103,7 +103,10 @@ Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzred
     use Juhara\ZzzCache\Helpers\TimeUtility;
 
     // create a redis-based cache
-    $cache = new Cache(new Redis(new \Predis\Client()), new TimeUtility());
+    $cache = new Cache(
+        new Redis(new \Predis\Client()),
+        new TimeUtility()
+    );
 
     ...
     try {
