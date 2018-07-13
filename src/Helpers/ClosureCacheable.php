@@ -9,7 +9,7 @@ use Juhara\ZzzCache\Contracts\Cacheable;
  *
  * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
-class ClosureCacheable implements Cacheable
+final class ClosureCacheable implements Cacheable
 {
     /**
      * callable that is call when data is needed
