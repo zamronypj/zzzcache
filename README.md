@@ -45,13 +45,13 @@ To use it, you need to provide `Juhara\ZzzCache\Contracts\CacheStorageInterface`
 
 See [Storage Implementation](#storage-implementation) for available `CacheStorageInterface` implementation.
 
-There is `Juhara\ZzzCache\Helpers\TimeUtility` class which is default `ExpiryCalculatorInterface` implementation for this library. See [Example](#example)
+There is `Juhara\ZzzCache\Helpers\ExpiryCalculator` class which is default `ExpiryCalculatorInterface` implementation for this library. See [Example](#example)
 
     <?php
 
     use Juhara\ZzzCache\Cache;
     use Juhara\ZzzCache\Storages\File;
-    use Juhara\ZzzCache\Helpers\TimeUtility;
+    use Juhara\ZzzCache\Helpers\ExpiryCalculator;
     use Juhara\ZzzCache\Helpers\Md5Hash;
 
     // create a file-based cache where all cache
@@ -64,7 +64,7 @@ There is `Juhara\ZzzCache\Helpers\TimeUtility` class which is default `ExpiryCal
             'app/storages/cache/',
             'cache'
         ),
-        new TimeUtility()
+        new ExpiryCalculator()
     );
 
 # Storage Implementation
@@ -97,7 +97,7 @@ Using file as cache storage with [zzzfile](https://github.com/zamronypj/zzzfile)
 
     use Juhara\ZzzCache\Cache;
     use Juhara\ZzzCache\Storages\File;
-    use Juhara\ZzzCache\Helpers\TimeUtility;
+    use Juhara\ZzzCache\Helpers\ExpiryCalculator;
     use Juhara\ZzzCache\Helpers\Md5Hash;
 
     // create a file-based cache where all cache
@@ -110,7 +110,7 @@ Using file as cache storage with [zzzfile](https://github.com/zamronypj/zzzfile)
             'app/storages/cache/',
             'cache'
         ),
-        new TimeUtility()
+        new ExpiryCalculator()
     );
 
 Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzredis).
@@ -119,12 +119,12 @@ Using Redis as cache storage with [zzzredis](https://github.com/zamronypj/zzzred
 
     use Juhara\ZzzCache\Cache;
     use Juhara\ZzzCache\Storages\Redis;
-    use Juhara\ZzzCache\Helpers\TimeUtility;
+    use Juhara\ZzzCache\Helpers\ExpiryCalculator;
 
     // create a redis-based cache
     $cache = new Cache(
         new Redis(new \Predis\Client()),
-        new TimeUtility()
+        new ExpiryCalculator()
     );
 
 To get data from cache if available or from slower storage.
