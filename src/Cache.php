@@ -62,7 +62,7 @@ final class Cache implements CacheInterface
      * read cached content by id from cache storage
      *
      * @param  string $cacheId cache identifier
-     * @return string  cached content
+     * @return mixed  cached content
      */
     private function getCachedItem($cacheId)
     {
@@ -74,7 +74,7 @@ final class Cache implements CacheInterface
      * storage when cache is missed
      *
      * @param  string $cacheId cache identifier
-     * @return string content
+     * @return mixed content
      */
     private function getFromCacheable($cacheId)
     {
@@ -101,7 +101,7 @@ final class Cache implements CacheInterface
     /**
      * retrieve cached item by id
      * @param  string $cacheId cached item identifier
-     * @return string cached item
+     * @return mixed cached item
      * @throws CacheNameNotFound
      */
     public function get($cacheId)

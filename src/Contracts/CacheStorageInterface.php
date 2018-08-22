@@ -18,14 +18,14 @@ interface CacheStorageInterface
     /**
      * read data from storage by cache id
      * @param  string $cacheId cache identifier
-     * @return string data from storage in serialized format
+     * @return mixed data from storage
      */
     public function read($cacheId);
 
     /**
      * write data to storage by cache id
      * @param  string $cacheId cache identifier
-     * @param  string $data item to cache in serialized format
+     * @param  mixed $data item to cache
      * @param  int $ttl time to live
      * @return int number of bytes written
      */
