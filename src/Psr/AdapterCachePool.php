@@ -3,6 +3,7 @@ namespace Juhara\ZzzCache\Psr;
 
 use Psr\Cache\CacheItemPoolInterface;
 use Juhara\ZzzCache\Contracts\CacheInterface;
+use Juhara\ZzzCache\Psr\Contracts\CacheItemFactoryInterface;
 
 /**
  * CacheItemPoolInterface implementation to support PSR-6 Caching Interface.
@@ -10,13 +11,29 @@ use Juhara\ZzzCache\Contracts\CacheInterface;
  * @link https://www.php-fig.org/psr/psr-6/
  * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
-final class AdapterCachePool implements CacheItemPoolInterface
+final class AdapterCachePool extends BaseAdapter implements CacheItemPoolInterface
 {
-    private $cache;
+    /**
+     * zzzcache instance
+     * @var Juhara\ZzzCache\Contracts\CacheInterface
+     */
+    private $zzzCache;
 
-    public function __construct(CacheInterface $cache)
-    {
-        $this->cache = $cache;
+    /**
+     * CacheItemInterface factory
+     *
+     * @var Juhara\ZzzCache\Psr\Contracts\CacheItemFactoryInterface
+     */
+    private $factory;
+
+    private $items = [];
+
+    public function __construct(
+        CacheInterface $cache,
+        CacheItemFactoryInterface $factory
+    ) {
+        $this->zzzCache = $cache;
+        $this->factory = $factory;
     }
 
     /**
@@ -37,7 +54,9 @@ final class AdapterCachePool implements CacheItemPoolInterface
      */
     public function getItem($key)
     {
-        //TODO: implement this
+        $this->triggerExceptionOnInvalidKeyFormat($key);
+        $item = $this->zzzCache->get($key);
+        return $this->factory->build($cacheable, $key);
     }
 
     /**
@@ -58,7 +77,14 @@ final class AdapterCachePool implements CacheItemPoolInterface
      */
     public function getItems(array $keys = array())
     {
-        //TODO: implement this
+        $this->triggerExceptionOnKeysNotArray($keys);
+
+        $items = [];
+        foreach ($keys as $key) {
+            $items[$key] = $this->getItem($key);
+        }
+
+        return $items;
     }
 
     /**
@@ -80,8 +106,8 @@ final class AdapterCachePool implements CacheItemPoolInterface
      */
     public function hasItem($key)
     {
-        //TODO: implement this
-        return $this->cache->has($key);
+        $this->triggerExceptionOnInvalidKeyFormat($key);
+        return $this->zzzCache->has($key);
     }
 
     /**
@@ -92,7 +118,7 @@ final class AdapterCachePool implements CacheItemPoolInterface
      */
     public function clear()
     {
-        $this->cache->clear();
+        $this->zzzCache->clear();
         return true;
     }
 
@@ -111,8 +137,9 @@ final class AdapterCachePool implements CacheItemPoolInterface
      */
     public function deleteItem($key)
     {
-        $this->cache->remove($key);
-        return true;
+        $this->triggerExceptionOnInvalidKeyFormat($key);
+        $item = $this->zzzCache->remove($key);
+        return ! is_null($item);
     }
 
     /**
@@ -130,7 +157,14 @@ final class AdapterCachePool implements CacheItemPoolInterface
      */
     public function deleteItems(array $keys)
     {
-        //TODO: implement this
+        $this->triggerExceptionOnKeysNotArray($keys);
+
+        $status = true;
+        foreach ($keys as $key) {
+            $status = $this->deleteItem($key) && $status;
+        }
+
+        return $status;
     }
 
     /**

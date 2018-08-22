@@ -3,7 +3,6 @@
 namespace Juhara\ZzzCache\Psr;
 
 use Psr\SimpleCache\CacheInterface as PsrCacheInterface;
-use Psr\SimpleCache\InvalidArgumentException as PsrInvalidArgumentException;
 use Juhara\ZzzCache\Contracts\CacheInterface;
 use Juhara\ZzzCache\Contracts\CacheableFactoryInterface;
 
@@ -13,7 +12,7 @@ use Juhara\ZzzCache\Contracts\CacheableFactoryInterface;
  * @link https://www.php-fig.org/psr/psr-16/
  * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
-final class AdapterCache implements PsrCacheInterface
+final class AdapterCache extends BaseAdapter implements PsrCacheInterface
 {
     /**
      * zzzcache instance
@@ -47,49 +46,6 @@ final class AdapterCache implements PsrCacheInterface
         $this->zzzCache = $zzzCache;
         $this->cacheableFactory = $cacheableFactory;
         $this->defaultTtl = $defaultTtl;
-    }
-
-    /**
-     * test if key len format is valid according to PSR-6 requirement
-     * which is UTF-8 code up to 64 characters consisting of combination of
-     * alphanumeric, underscore and dot characters.
-     * @param  string  $key key name
-     * @return boolean      true if key is valid, false otherwise
-     */
-    private function isLegalKeyFormat($key)
-    {
-        $len = strlen($key);
-        return ($len > 0) &&
-            ($len <= 64) &&
-            (preg_match('/[a-zA-Z0-9\.\_]+/', $key) === 1);
-    }
-
-    /**
-     * trigger exception if key name is invalid
-     * @param  string $key key name
-     * @return void
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * if key is invalid
-     */
-    private function triggerExceptionOnInvalidKeyFormat($key)
-    {
-        if (! $this->isLegalKeyFormat($key)) {
-            throw new PsrInvalidArgumentException('Invalid key name');
-        }
-    }
-
-    /**
-     * trigger exception if keys is not array
-     * @param  array $keys array of key name
-     * @return void
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * if keys is not array
-     */
-    private function triggerExceptionOnKeysNotArray($keys)
-    {
-        if (! is_array($keys)) {
-            throw new PsrInvalidArgumentException('Input must be array');
-        }
     }
 
     /**
