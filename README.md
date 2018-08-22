@@ -164,7 +164,7 @@ thorough `Juhara\ZzzCache\Psr\AdapterCache` class which acts as an adapter. It
 implements `Psr\SimpleCache\CacheInterface`. For example,
 
 ```
-$psr6Cache = new \Juhara\ZzzCache\Psr\AdapterCache(
+$psr16Cache = new \Juhara\ZzzCache\Psr\AdapterCache(
     new \Juhara\ZzzCache\Cache(
         new \Juhara\ZzzCache\Storages\Redis(new \Predis\Client()),
         new \Juhara\ZzzCache\Helpers\ExpiryCalculator()
