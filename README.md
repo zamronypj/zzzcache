@@ -157,9 +157,9 @@ To get data from cache if available or from slower storage.
                             ->get('itemNeedToBeCache');
     }
 
-# PSR-6 CacheInterface support
+# PSR-16 CacheInterface support
 
-ZzzCache adds support to [PSR-6 CacheInterface](https://www.php-fig.org/psr/psr-6/)
+ZzzCache adds support to [PSR-16 CacheInterface](https://www.php-fig.org/psr/psr-16/)
 thorough `Juhara\ZzzCache\Psr\AdapterCache` class which acts as an adapter. It
 implements `Psr\SimpleCache\CacheInterface`. For example,
 

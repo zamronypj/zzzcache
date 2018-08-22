@@ -8,9 +8,9 @@ use Juhara\ZzzCache\Contracts\CacheInterface;
 use Juhara\ZzzCache\Contracts\CacheableFactoryInterface;
 
 /**
- * Adapter implementation to support PSR-6 CacheInterface
+ * Adapter implementation to support PSR-16 CacheInterface
  *
- * @link https://www.php-fig.org/psr/psr-6/
+ * @link https://www.php-fig.org/psr/psr-16/
  * @author Zamrony P. Juhara <zamronypj@yahoo.com>
  */
 final class AdapterCache implements PsrCacheInterface
