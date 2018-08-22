@@ -22,7 +22,7 @@ Any class that can be stored in cache manager needs to implements `Juhara\ZzzCac
 
 When reading data from cache, cache manager relies on cache storage interface implementation to provide proper serialization/unserialization when read or write data.
 
-There is one `Juhara\ZzzCache\Contracts\Cacheable` implementation provided, `ClosureCacheable` class, which implements data as closure.
+There is one `Juhara\ZzzCache\Contracts\Cacheable` implementation provided, `Juhara\ZzzCache\Helpers\ClosureCacheable` class, which implements data as closure.
 
     $ttl = 60 * 60 * 1; //cache item for 1 hour
     $cacheableItem = new Juhara\ZzzCache\Helpers\ClosureCacheable(function () {
@@ -32,6 +32,15 @@ There is one `Juhara\ZzzCache\Contracts\Cacheable` implementation provided, `Clo
     }, $ttl);
 
 When `$cacheableItem->data()` is called, it calls closure function pass in constructor and return data that defined in closure.
+
+`Juhara\ZzzCache\Helpers\ClosureCacheableFactory` class implements
+`Juhara\ZzzCache\Contracts\CacheableFactoryInterface` and acts as factory for
+`Juhara\ZzzCache\Helpers\ClosureCacheable` class.
+
+```
+$cacheableFactory = new \Juhara\ZzzCache\Helpers\ClosureCacheableFactory();
+$cacheableItem = $cacheableFactory->build($data, $ttl);
+```
 
 Of course, you are free to implement your own.
 
