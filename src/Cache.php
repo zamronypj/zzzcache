@@ -60,6 +60,7 @@ final class Cache implements CacheInterface
 
     /**
      * read cached content by id from cache storage
+     * If this method get called it means cache hit
      *
      * @param  string $cacheId cache identifier
      * @return mixed  cached content
