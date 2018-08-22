@@ -2,7 +2,7 @@
     "name": "juhara/zzzcache",
     "description": "A minimalist cache system",
     "type" : "library",
-    "keywords" : ["cache", "library", "psr-6"],
+    "keywords" : ["cache", "library", "psr-6", "psr-16"],
     "license": "Apache-2.0",
     "authors": [
         {
