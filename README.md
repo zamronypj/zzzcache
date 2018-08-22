@@ -148,6 +148,22 @@ To get data from cache if available or from slower storage.
                             ->get('itemNeedToBeCache');
     }
 
+# PSR-6 CacheInterface support
+
+ZzzCache adds support to (PSR-6 CacheInterface)[https://www.php-fig.org/psr/psr-6/]
+thorough `Juhara\ZzzCache\Psr\AdapterCache` class which acts as an adapter. It
+implements `Psr\SimpleCache\CacheInterface`. For example,
+
+```
+$psr6Cache = new \Juhara\ZzzCache\Psr\AdapterCache(
+    new \Juhara\ZzzCache\Cache(
+        new \Juhara\ZzzCache\Storages\Redis(new \Predis\Client()),
+        new \Juhara\ZzzCache\Helpers\ExpiryCalculator()
+    ),
+    new \Juhara\ZzzCache\Helpers\ClosureCacheableFactory(),
+    60 * 60 * 1 //default time to live for 1 hour
+);
+```
 
 # Contributing
 
