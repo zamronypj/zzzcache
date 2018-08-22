@@ -65,7 +65,7 @@ final class Cache implements CacheInterface
      * @param  string $cacheId cache identifier
      * @return mixed  cached content
      */
-    private function getCachedItem($cacheId)
+    private function getCachedItemWhenHit($cacheId)
     {
         return $this->storage->read($cacheId);
     }
@@ -77,12 +77,11 @@ final class Cache implements CacheInterface
      * @param  string $cacheId cache identifier
      * @return mixed content
      */
-    private function getFromCacheable($cacheId)
+    private function getFromCacheableAndPersistWhenMiss($cacheId)
     {
         $cacheable = $this->cachedItems[$cacheId]->cacheable;
         $data = $cacheable->data();
-        $ttl = $cacheable->ttl();
-        $this->storage->write($cacheId, $data, $ttl);
+        $this->storage->write($cacheId, $data, $cacheable->ttl());
         return $data;
     }
 
@@ -110,10 +109,10 @@ final class Cache implements CacheInterface
         $this->throwExceptionIfNotExists($cacheId);
 
         if ($this->expired($cacheId)) {
-            return $this->getFromCacheable($cacheId);
+            return $this->getFromCacheableAndPersistWhenMiss($cacheId);
         }
 
-        return $this->getCachedItem($cacheId);
+        return $this->getCachedItemWhenHit($cacheId);
     }
 
     /**
