@@ -12,7 +12,7 @@ use Juhara\ZzzCache\Contracts\Cacheable;
 final class ClosureCacheable implements Cacheable
 {
     /**
-     * callable that is call when data is needed
+     * callable that is called when data is needed
      * @var callable
      */
     private $dataClosure;
