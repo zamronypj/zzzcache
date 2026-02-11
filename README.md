@@ -3,7 +3,7 @@ A minimalist and simple PHP cache library implementation. Visit
 [Documentation](https://v3.juhara.com/zzzcache.html) for more information.
 
 # Requirement
-- [PHP >= 5.4](https://php.net)
+- [PHP >= 7.2](https://php.net)
 - [Composer](https://getcomposer.org)
 
 # Installation
@@ -144,7 +144,7 @@ To get data from cache if available or from slower storage.
 
     try {
         //try to get data from cache if available
-        $cachedData = $cache->get('itemNeedToBeCache');        
+        $cachedData = $cache->get('itemNeedToBeCache');
     } catch (\Juhara\ZzzCache\Exceptions\CacheNameNotFound $e) {
         $acacheableItem = new \Juhara\ZzzCache\Helpers\ClosureCacheable(
             function () {
